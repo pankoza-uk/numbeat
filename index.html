@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numbeat Composer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Numbeat Composer</h1>
+
+  <div id="editorWrapper">
+    <pre id="highlight"><code></code></pre>
+    <textarea id="code" spellcheck="false">// Enter your beat code here...</textarea>
+  </div>
+
+  <div class="controls">
+    <button id="playBtn">▶ Play</button>
+    <button id="stopBtn">■ Stop</button>
+    <button id="recordBtn" title="Record"></button>
+
+    <label>Volume:
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
+    </label>
+
+    <label>Sample Rate:
+      <select id="sampleRate">
+        <option value="8000">8000 Hz</option>
+        <option value="11250">11250 Hz</option>
+        <option value="22050">22050 Hz</option>
+        <option value="41000" selected>41000 Hz</option>
+        <option value="48000">48000 Hz</option>
+      </select>
+    </label>
+  </div>
+
+  <canvas id="visualizer"></canvas>
+
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button data-tab="standard" class="active">Standard Beats</button>
+      <button data-tab="math">Math Operated Beats</button>
+      <button data-tab="large">Large Math Operated</button>
+    </div>
+
+    <div id="standard" class="tab-content active">
+      <ul>
+        <li onclick="insertCode('1+2')">1 + 2</li>
+        <li onclick="insertCode('2*3')">2 * 3</li>
+        <li onclick="insertCode('9/3 + 4')">9 / 3 + 4</li>
+        <li onclick="insertCode('(5+2)*2')">(5 + 2) * 2</li>
+        <li onclick="insertCode('8-3')">8 - 3</li>
+        <li onclick="insertCode('6*6/2')">6 * 6 / 2</li>
+        <li onclick="insertCode('7+1*3')">7 + 1 * 3</li>
+        <li onclick="insertCode('(4+4)/2')">(4 + 4) / 2</li>
+        <li onclick="insertCode('3*3 + 1')">3 * 3 + 1</li>
+        <li onclick="insertCode('9-4+1')">9 - 4 + 1</li>
+      </ul>
+    </div>
+
+    <div id="math" class="tab-content">
+      <ul>
+        <li onclick="insertCode('Math.sin(1) * 200')">sin(1) * 200</li>
+        <li onclick="insertCode('Math.cos(2) * 400')">cos(2) * 400</li>
+        <li onclick="insertCode('Math.tan(3) * 100')">tan(3) * 100</li>
+        <li onclick="insertCode('Math.sin(4) + 100')">sin(4) + 100</li>
+        <li onclick="insertCode('Math.cos(5) * 250')">cos(5) * 250</li>
+        <li onclick="insertCode('Math.sin(6*2) * 300')">sin(6*2) * 300</li>
+        <li onclick="insertCode('Math.tan(7) * 75')">tan(7) * 75</li>
+        <li onclick="insertCode('Math.sin(8+1) * 500')">sin(8+1) * 500</li>
+        <li onclick="insertCode('Math.cos(2*3) * 600')">cos(2*3) * 600</li>
+        <li onclick="insertCode('Math.sin(1)*Math.cos(2)*300')">sin(1)*cos(2)*300</li>
+      </ul>
+    </div>
+
+    <div id="large" class="tab-content">
+      <ul>
+        <li onclick="insertCode('\"beat\".charCodeAt(0) + Math.sin(3) * 100')">charCode + sin</li>
+        <li onclick="insertCode('\"hello\".charCodeAt(1) * Math.cos(5) * 2')">charCode * cos</li>
+        <li onclick="insertCode('Math.sqrt(\"z\".charCodeAt(0)) * 50 + 123')">sqrt charCode</li>
+        <li onclick="insertCode('\"Code123\".charCodeAt(2) + Math.tan(2) * 200')">char + tan</li>
+        <li onclick="insertCode('\"bigbeat!\".charCodeAt(4) * Math.sin(5) + 77')">beat + sin</li>
+        <li onclick="insertCode('Math.cos(\"longstring\".charCodeAt(3)) * 400')">cos long string</li>
+        <li onclick="insertCode('\"music\".charCodeAt(2) * Math.sin(4) * Math.cos(3)')">sin * cos * char</li>
+        <li onclick="insertCode('Math.tan(\"mega\".charCodeAt(0) * 2) + 150')">tan + char * 2</li>
+        <li onclick="insertCode('(\"soundwave\".charCodeAt(6) + Math.sin(1)) * 2')">char + sin * 2</li>
+        <li onclick="insertCode('Math.sin(\"NumbeatCool\".charCodeAt(5)) * 100 + 22')">final long beat</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
